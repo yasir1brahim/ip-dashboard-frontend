@@ -1,0 +1,41 @@
+[
+      {
+        "name": "name1",
+        "projects": [
+          {
+            "project": "Project1",
+            "assignee": "name10"
+          },
+          {
+            "project": "Project2",
+            "assignee": "name11"
+          }
+        ]
+      },
+      {
+        "name": "name2",
+        "projects": [
+          {
+            "project": "Project3",
+            "assignee": "name12"
+          },
+          {
+            "project": "Project4",
+            "assignee": "name13"
+          }
+        ]
+      },
+      {
+        "name": "name3",
+        "projects": [
+          {
+            "project": "Project5",
+            "assignee": "name14"
+          },
+          {
+            "project": "Project6",
+            "assignee": "name15"
+          }
+        ]
+      }
+    ]

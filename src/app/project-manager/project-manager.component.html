@@ -1,0 +1,19 @@
+<div *ngFor="let project_manager of project_managers;index as i">
+    <h3>{{project_manager.name}}</h3>
+    <table>
+        <tr>
+            <th>Projects</th>
+            <th>Resource</th>
+        </tr>
+        <tr *ngFor="let project of project_manager.projects;index as i">
+            <td>
+                {{project.project}}
+            </td>
+            <td>
+                {{project.assignee}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+

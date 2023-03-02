@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.table-availability-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  table {
+    flex-basis: 50%;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  ._mat-animation-noopable span.mdc-tab__text-label {
+    color: #c2185b;
+}
+  

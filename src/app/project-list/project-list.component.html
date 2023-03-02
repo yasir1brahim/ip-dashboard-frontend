@@ -1,0 +1,18 @@
+<h2>
+    {{dateToday}}
+</h2>
+<table>
+    <tr>
+        <th>Projects</th>
+        <th>Resources</th>
+    </tr>
+    <tr *ngFor="let project of projectList;index as i">
+        <td>
+            {{project.project}}
+        </td>
+        <td>
+            {{project.resources}}
+        </td>
+    </tr>
+</table>
+
