@@ -1,3 +1,6 @@
+<button type="button" class="btn btn-primary"
+(click)="openPopupProjectManager()">Add
+</button>
 <div *ngFor="let project_manager of project_managers;index as i">
     <h3>{{project_manager.name}}</h3>
     <table>
@@ -17,3 +20,34 @@
 </div>
 
 
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add</h4>
+        <button type="button" class="btn" 
+        (click)="closePopup()">
+        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <label>Name</label>
+            <input type="text" [(ngModel)]="name">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"
+        (click)="saveProjectManager()">
+          Save
+        </button>
+
+
+      </div>
+    </div>
+  </div>
+</div>

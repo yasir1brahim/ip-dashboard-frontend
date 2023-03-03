@@ -8,10 +8,12 @@ import { DashboardDataService } from '../dashboard-data.service';
 })
 export class ProjectManagerComponent {
 
+  displayStyle='none';
 
 constructor(private dashboardDataService: DashboardDataService){}
 
-  project_managers:any
+  project_managers:any;
+  name:any;
   ngOnInit(){
     this.getData();
   }
@@ -20,12 +22,31 @@ constructor(private dashboardDataService: DashboardDataService){}
   getData(){
     this.dashboardDataService.getProjectManagerData().subscribe((project_managers: any) => {
       this.project_managers=project_managers
-      console.log("length");
+      // console.log("length");
       console.log(this.project_managers[0]);
   }, (err: any) => {
       console.log(err);
   }
   );
   }
+
+  openPopupProjectManager() {
+
+    this.displayStyle = "block";
+  }
+  saveProjectManager(){
+    this.dashboardDataService.saveProjectManager(this.name).subscribe((requirements: any) => {
+      console.log("Project Manager saved successfully");
+      this.getData();
+      this.displayStyle='none';
+  }, (err: any) => {
+      console.log(err);
+  }
+  );
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
 
 }

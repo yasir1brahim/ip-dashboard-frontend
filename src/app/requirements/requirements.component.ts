@@ -10,7 +10,7 @@ import { Requirements } from './model/requirements';
 })
 export class RequirementsComponent {
   requirements:Requirements[]=[];
-  requirement:any;
+  requirement:Requirements={"id":"1","project":"project3","resource":"name1","hours":"0"};
   projects: any;
   resources:any;
   constructor(private dashboardDataService: DashboardDataService){
@@ -39,24 +39,39 @@ export class RequirementsComponent {
   getRequirements(){
     this.dashboardDataService.getRequirements().subscribe((requirements: any) => {
       this.requirements= requirements
+     console.log('reqs',this.requirements)
   }, (err: any) => {
       console.log(err);
   }
   );
   }
 
-  saveRequirements(){
-    this.dashboardDataService.saveRequirements(this.requirement.project,this.requirement.resources,this.requirement.number_of_hours).subscribe((requirements: any) => {
-      console.log("requirements saved successfully");
-  }, (err: any) => {
-      console.log(err);
-  }
-  );
-  window.location.reload();
+  saveRequirements(id:any){
+    if(id==0){
+      this.dashboardDataService.saveRequirements(this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
+        console.log("requirements saved successfully");
+        this.getRequirements();
+       this.displayStyle='none';
+    }, (err: any) => {
+        console.log(err);
+    }
+    );
+    }
+    else{
+      this.dashboardDataService.updateRequirements(this.requirement.id,this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
+        console.log("requirements saved successfully");
+        this.getRequirements();
+       this.displayStyle='none';
+    }, (err: any) => {
+        console.log(err);
+    }
+    );
+    }
+
+    
   }
 
   getResources(){
-    console.log("1");
     this.dashboardDataService.getResources().subscribe((resources: any) => {
       this.resources= resources;
   }, (err: any) => {
@@ -67,9 +82,22 @@ export class RequirementsComponent {
 
 
   openPopupRequirements(id:any) {
-    
-  
-    this.requirement=this.dashboardDataService.getRequirementDataSingleRecord(id);
+    if(id==0){
+      this.requirement.project='';
+      this.requirement.resource='';
+      this.requirement.hours='';
+      this.requirement.id='0';
+    }
+    else{
+      this.dashboardDataService.getRequirementDataSingleRecord(id).subscribe((requirement: any) => {
+        this.requirement = requirement;
+      }, (err: any) => {
+        console.log(err);
+      }
+      );
+    }
+    this.getResources();
+    this.getProjects();
     this.displayStyle = "block";
   }
   closePopup() {
@@ -87,13 +115,15 @@ export class RequirementsComponent {
   deleteData(){
     this.dashboardDataService.deleteRequirementData(this.id).subscribe((data: any) => {
       console.log("requirement data deleted successfully");
+      this.getRequirements();
+      this.displayStyle1="none";
     }, (err: any) => {
       console.log(err);
     }
     );
-    this.displayStyle1="none";
-    // this.getRequirements();
-    window.location.reload();
+   
+
+    
   }
 
 

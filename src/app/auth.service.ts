@@ -55,6 +55,6 @@ export class AuthService {
 
   goToMain(){
     // let headers=new HttpHeaders().set("Authorization",`bearer ${localStorage.getItem('token')}`)
-    return this.http.get<any>('/api/main'/*,{headers}*/).subscribe((result:any)=>{})
+    // return this.http.get<any>('/api/main'/*,{headers}*/).subscribe((result:any)=>{})
   }
 }

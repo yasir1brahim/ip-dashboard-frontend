@@ -20,12 +20,12 @@
             {{dashboard.project_manager}}
         </td>
         <td>
-            <button type="button" class="btn btn-success" [disabled]="admin==true"
+            <button type="button" class="btn btn-success"
                 (click)="openPopupDashboard(dashboard.id)">Edit
             </button>
         </td>
         <td>
-          <button type="button" class="btn btn-danger" [disabled]="admin==true"
+          <button type="button" class="btn btn-danger"
             (click)="openPopupDelete(dashboard.id)">Delete
           </button>
         </td>
@@ -54,25 +54,31 @@
       <div class="modal-body">
         <div>
             <label>Name</label>
-            <input type="text" [(ngModel)]="dashboard!.developer">
+            <input type="text" [(ngModel)]="dashboard.developer">
         </div>
         <div>
             <label>Project</label>
-            <select>
-                <option *ngFor="let project of projects" [selected]="dashboard.project">{{project}}</option>
+            <select [(ngModel)]="dashboard.project" >
+                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
             </select>
         </div>
-        <div>  
+        <div>   
             <label>Assignee</label>      
-            <input type="text" [(ngModel)]="dashboard!.project_manager">
+            <input type="text" [(ngModel)]="dashboard.project_manager">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" 
-        (click)="saveData()">
+        
+        <button type="button" class="btn btn-success" *ngIf="dashboard.id!='0'; else other"
+        (click)="saveData(dashboard.id)">
         Save
         </button>
-
+        <ng-template #other>
+          <button type="button" class="btn btn-success"
+          (click)="saveData(0)">
+          Save
+          </button>
+      </ng-template>
       </div>
     </div>
   </div>

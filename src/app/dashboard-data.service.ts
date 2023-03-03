@@ -4,6 +4,7 @@ import { Dashboard } from './dashboard/model/dashboard';
 import { ProjectList } from './project-list/model/project-list';
 import { Requirements } from './requirements/model/requirements';
 import { HttpClient } from '@angular/common/http';
+import { environment } from './environment';
 
 @Injectable({
   providedIn: 'root'
@@ -42,23 +43,25 @@ not_yet_in:string[]=['Name7','Name8','Name9','Name10'];
 
 
   getDashboardData():  Observable<any> {
-    return this.http.get<any[]>('assets/dashboards.json');
+    return this.http.get<any[]>(environment.backendBaseAddress+'dashboards');
   }
 
   getDashboardDataSingleRecord(id:any) :  Observable<any> {
-    return this.http.get<any[]>('assets/dashboard.json',{
-      params: { id: id }
+
+    
+    return this.http.get<any>(environment.backendBaseAddress+'dashboards/'+id,{
+      /*params: { id: id }*/
     });
    }
 
   getRequirementDataSingleRecord(id:any) {
-    return this.http.get<any[]>('assets/requirement.json',{
-      params: { id: id }
+    return this.http.get<any>(environment.backendBaseAddress+'requirements/'+id,{
+     /* params: { id: id }*/
     });
   }
 
   getProjects():Observable<any> {
-    return this.http.get<any[]>('assets/projects.json');
+    return this.http.get<any[]>(environment.backendBaseAddress+'projects');
   }
 
   getProjectListData(): Observable<any> {
@@ -73,31 +76,53 @@ not_yet_in:string[]=['Name7','Name8','Name9','Name10'];
   return this.http.get<any[]>('assets/resources.json');
   }
   getRequirements():Observable<any>{
-    return this.http.get<any[]>('assets/requirements.json');
+    return this.http.get<any[]>(environment.backendBaseAddress+'requirements');
   }
 
   saveDashboardData(developer: any, project: any,project_manager:any): Observable<any> {
     const body = { developer:developer, project: project,project_manager:project_manager };
-    return this.http.post<any>('url', body);
+    return this.http.post<any>(environment.backendBaseAddress+'dashboards', body);
   }
+
+  saveRequirements(project:any,resource:any,hours:any):Observable<any>{
+    const body = { project:project, resource:resource,hours:hours };
+    return this.http.post<any>(environment.backendBaseAddress+'requirements', body);
+  }
+
+  saveProjectManager(project_manager:any):Observable<any>{
+    const body = { name:project_manager };
+    return this.http.post<any>(environment.backendBaseAddress+'project_manager', body);
+  }
+
 
   deleteDashboardData(id:any): Observable<any> {
-    return this.http.delete<any>('url', {
-      params: { id: id }   } );
+    return this.http.delete<any>(environment.backendBaseAddress+'dashboards/'+id, {
+      /*params: { id: id }  */ } );
   }
 
+  updateDashboardData(id:any,developer:any,project:any,project_manager:any): Observable<any> {
+    const body = { developer:developer, project:project,project_manager:project_manager };
+    return this.http.put<any>(environment.backendBaseAddress+'dashboards/'+id, body,
+    {/* params:{id:id,developer:developer,project:project,project_manager:project_manager}*/
+    }, );
+  }
+
+  updateRequirements(id:any,project:any,resource:any,hours:any):Observable<any>{
+    const body = { project:project, resource:resource,hours:hours };
+    return this.http.put<any>(environment.backendBaseAddress+'requirements/'+id, body);
+  }
+
+
   deleteRequirementData(id:any): Observable<any> {
-    return this.http.delete<any>('url'/*environment.backendBaseAddress+'deleterequirementdata/'+id*/, {
-      params: { id: id }   } );
+    return this.http.delete<any>(environment.backendBaseAddress+'requirements/'+id, {
+    /*  params: { id: id } */  } );
   }
 
   getProjectManagerData():Observable<any>{
-    return this.http.get<any>('assets/projectmanager.json'/*environment.backendBaseAddress+'getprojectmanagerdata'*/);
+    return this.http.get<any>(environment.backendBaseAddress+'project_manager');
   }
 
-  saveRequirements(project:any,resources:any,number_of_hours:any):Observable<any>{
-    const body = { project:project, resources:resources,number_of_hours:number_of_hours };
-    return this.http.post<any>('url', body);
-  }
+
+
 
 }

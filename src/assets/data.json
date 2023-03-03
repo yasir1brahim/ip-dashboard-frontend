@@ -1,0 +1,90 @@
+{
+  "projects": [
+    "project1",
+    "project2",
+    "project3",
+    "project4"
+  ],
+  "dashboards": [
+    {
+      "developer": "ab",
+      "project": "project1",
+      "project_manager": "a",
+      "id": 2
+    },
+    {
+      "developer": "waqar",
+      "project": "project2",
+      "project_manager": "daniyal",
+      "id": 3
+    }
+  ],
+  "requirements": [
+    {
+      "project": "project1",
+      "resource": "name1",
+      "hours": "12",
+      "id": 1
+    },
+    {
+      "project": "project1",
+      "resource": "name2",
+      "hours": "1",
+      "id": 2
+    },
+    {
+      "project": "project2",
+      "resource": "name2",
+      "hours": "1",
+      "id": 3
+    }
+  ],
+  "project_manager": [
+    {
+      "id": "cnlcd",
+      "name": "name1",
+      "projects": [
+        {
+          "project": "Project1",
+          "assignee": "name11"
+        },
+        {
+          "project": "Project2",
+          "assignee": "name11"
+        }
+      ]
+    },
+    {
+      "id": "cmcmx",
+      "name": "name2",
+      "projects": [
+        {
+          "project": "Project3",
+          "assignee": "name12"
+        },
+        {
+          "project": "Project4",
+          "assignee": "name13"
+        }
+      ]
+    },
+    {
+      "id": "okowc",
+      "name": "name3",
+      "projects": [
+        {
+          "project": "Project5",
+          "assignee": "name14"
+        },
+        {
+          "project": "Project6",
+          "assignee": "name15"
+        }
+      ]
+    },
+    {
+      "name": "a",
+      "id": "1K-gIPM"
+    }
+  ]
+}

@@ -51,24 +51,34 @@
       </div>
       <div class="modal-body">
         <div>
-            <select>
-                <option *ngFor="let project of projects" [selected]="requirement.project">{{project}}</option>
+          <labeL>Project</labeL>
+            <select [(ngModel)]="requirement.project">
+              <option *ngFor="let project of projects" [value]="project">{{project}}</option>
             </select>
         </div>
         <div>
-            <select>
-                <option *ngFor="let resource of resources" [selected]="requirement.resource">{{resource}}</option>
+          <label>Resource</label>
+            <select [(ngModel)]="requirement.resource">
+              <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
             </select>
         </div>
-        <div>        
-            <input type="text" >
+        <div>
+            <label>Hours</label>
+            <input type="text" [(ngModel)]="requirement.hours">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" 
-        (click)="saveRequirements()">
+        <button type="button" class="btn btn-success" *ngIf="requirement.id!='0'; else other" 
+        (click)="saveRequirements(requirement.id)">
           Save
         </button>
+        <ng-template #other>        
+          <button type="button" class="btn btn-success"
+          (click)="saveRequirements(0)">
+          Save
+          </button>
+        </ng-template>
+
 
       </div>
     </div>
