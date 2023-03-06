@@ -1,18 +1,28 @@
 <form [formGroup]="form">
     <fieldset>
         <legend>Login</legend>
-        <div class="form-field">
-            <label>Email:</label>
-            <input name="email" formControlName="email">
-        </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input name="password" formControlName="password" 
-                   type="password">
-        </div>
+        <table>
+            <tr class="form-field">
+                <td style="border:none;">
+                    <label>Email:</label>
+                </td>
+                <td style="border:none;">
+                    <input name="email" formControlName="email">
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td style="border:none;">
+                    <label>Password:</label>
+                </td>
+                <td style="border:none;">
+                    <input name="password" formControlName="password" 
+                    type="password">
+                </td>
+            </tr>
+        </table>
     </fieldset>
     <div class="form-buttons">
-        <button class="button button-primary" 
+        <button class="btn btn-primary" 
                 (click)="login()">Login</button>
     </div>
 </form>

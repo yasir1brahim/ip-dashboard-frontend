@@ -77,14 +77,16 @@ export class DashboardComponent {
       this.dashboard.id="0";
     }
 
+    else{
+    
+      this.dashboardDataService.getDashboardDataSingleRecord(id).subscribe((dashboard: any) => {
+        this.dashboard = dashboard;
+      }, (err: any) => {
+        console.log(err);
+      }
+      );
+    } 
     this.getProjects();
-    this.dashboardDataService.getDashboardDataSingleRecord(id).subscribe((dashboard: any) => {
-      this.dashboard = dashboard;
-    }, (err: any) => {
-      console.log(err);
-    }
-    );
-
     this.render_dialog=true;
   }
 

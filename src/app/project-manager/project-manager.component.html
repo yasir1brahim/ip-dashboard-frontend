@@ -35,10 +35,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <div>
-            <label>Name</label>
-            <input type="text" [(ngModel)]="name">
-        </div>
+        <table>
+          <tr>
+            <td style="border:none">
+              <label>Name</label>
+            </td>
+            <td style="border:none">
+              <input type="text" [(ngModel)]="name">
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success"

@@ -7,10 +7,10 @@
   ],
   "dashboards": [
     {
-      "developer": "abc",
-      "project": "project2",
-      "project_manager": "abc",
-      "id": 2
+      "developer": "a",
+      "project": "project1",
+      "project_manager": "a",
+      "id": 1
     }
   ],
   "requirements": [

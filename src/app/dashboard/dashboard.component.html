@@ -52,21 +52,35 @@
 
       </div>
       <div class="modal-body">
-        <div>
-            <label>Name</label>
-            <input type="text" [(ngModel)]="dashboard.developer">
-        </div>
-        <div>
-            <label>Project</label>
-            <select [(ngModel)]="dashboard.project" >
-                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
-            </select>
-        </div>
-        <div>   
-            <label>Assignee</label>      
-            <input type="text" [(ngModel)]="dashboard.project_manager">
-        </div>
-      </div>
+        <table>
+          <tr>
+            <td style="border:none;">
+              <label>Name</label>
+            </td>
+            <td style="border:none;">
+              <input type="text" [(ngModel)]="dashboard.developer">
+            </td>
+          </tr>
+          <tr>
+            <td style="border:none;">
+              <label>Project</label>
+            </td>
+            <td style="border:none;">
+              <select [(ngModel)]="dashboard.project" >
+                  <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td style="border:none;">
+              <label>Assignee</label> 
+            </td>
+            <td style="border:none;">     
+              <input type="text" [(ngModel)]="dashboard.project_manager">
+            </td>
+          </tr>
+        </table>
+
       <div class="modal-footer">
         
         <button type="button" class="btn btn-success" *ngIf="dashboard.id!='0'; else other"
@@ -78,7 +92,8 @@
           (click)="saveData(0)">
           Save
           </button>
-      </ng-template>
+        </ng-template>
+        </div>
       </div>
     </div>
   </div>
