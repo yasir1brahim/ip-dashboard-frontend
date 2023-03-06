@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" [disabled]="admin==true"
+<button type="button" class="btn btn-primary" [disabled]="admin==false"
 (click)="openPopupRequirements(0)">Add
 </button>
 <table>
@@ -20,12 +20,12 @@
             {{requirement.hours}}
         </td>
         <td>
-            <button type="button" class="btn btn-success" [disabled]="admin==true"
+            <button type="button" class="btn btn-success" [disabled]="admin==false"
                 (click)="openPopupRequirements(requirement.id)">Edit
             </button>
         </td>
         <td>
-          <button type="button" class="btn btn-danger" [disabled]="admin==true"
+          <button type="button" class="btn btn-danger" [disabled]="admin==false"
               (click)="openPopupDelete(requirement.id)">Delete
           </button>
       </td>
@@ -39,7 +39,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
-  [ngStyle]="{'display':displayStyle}">
+  [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -90,7 +90,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
-  [ngStyle]="{'display':displayStyle1}">
+  [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

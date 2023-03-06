@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DashboardDataService } from '../dashboard-data.service';
-
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-project-manager',
   templateUrl: './project-manager.component.html',
@@ -8,14 +8,18 @@ import { DashboardDataService } from '../dashboard-data.service';
 })
 export class ProjectManagerComponent {
 
-  displayStyle='none';
+  render_dialog=false;
 
-constructor(private dashboardDataService: DashboardDataService){}
+constructor(private dashboardDataService: DashboardDataService,private authService:AuthService){}
 
   project_managers:any;
   name:any;
+  admin:boolean=false;
   ngOnInit(){
     this.getData();
+    if (this.authService.getSession('user_role') == "ADMIN") {
+      this.admin = true;
+  }
   }
   
   
@@ -32,20 +36,20 @@ constructor(private dashboardDataService: DashboardDataService){}
 
   openPopupProjectManager() {
 
-    this.displayStyle = "block";
+    this.render_dialog=true;
   }
   saveProjectManager(){
     this.dashboardDataService.saveProjectManager(this.name).subscribe((requirements: any) => {
       console.log("Project Manager saved successfully");
       this.getData();
-      this.displayStyle='none';
+      this.render_dialog=false;
   }, (err: any) => {
       console.log(err);
   }
   );
   }
   closePopup() {
-    this.displayStyle = "none";
+    this.render_dialog=false;
   }
 
 

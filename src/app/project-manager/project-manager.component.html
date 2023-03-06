@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-primary"
-(click)="openPopupProjectManager()">Add
+(click)="openPopupProjectManager()" [disabled]="admin==false">Add
 </button>
 <div *ngFor="let project_manager of project_managers;index as i">
     <h3>{{project_manager.name}}</h3>
@@ -24,7 +24,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
-  [ngStyle]="{'display':displayStyle}">
+  [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

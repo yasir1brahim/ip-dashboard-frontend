@@ -16,6 +16,11 @@ export class AuthService {
     // we still need to handle the reception of the token;
   }
 
+  public getSession(value:any){
+    let role = localStorage.getItem(value);
+    //return "ADMIN";
+     return role
+  }
 
 
   //   login(email:string, password:string ) {

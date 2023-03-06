@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { DashboardDataService } from '../dashboard-data.service';
 import { Dashboard } from './model/dashboard';
 
@@ -9,12 +10,11 @@ import { Dashboard } from './model/dashboard';
 })
 export class DashboardComponent {
   dashboards: Dashboard[] = [];
-  dashboard: Dashboard={ "id":"1", "developer": "Waqar", "project": "project1", "project_manager": "daniyal" };
+  dashboard: Dashboard;
   id:any;
   admin:boolean=false;
-
-  displayStyle = "none";
-  displayStyle1= "none";
+  render_dialog=false;
+  render_dialog1=false;
   // dashboard1: Dashboard = { id:'1', developer: 'Waqar', project: 'project1', project_manager: 'daniyal' };
   // dashboard2: Dashboard = { id:'2', developer: 'Osama', project: 'project2', project_manager: 'daniyal' };
   // dashboard3: Dashboard = { id:'3', developer: 'Waqar', project: 'project3', project_manager: 'daniyal' };
@@ -22,11 +22,14 @@ export class DashboardComponent {
 
 
   projects: any;
-  constructor(private dashboardDataService: DashboardDataService) {
+  constructor(private dashboardDataService: DashboardDataService,private authService:AuthService) {
   }
 
   ngOnInit() {
     this.getData();
+    if (this.authService.getSession('user_role') == "ADMIN") {
+      this.admin = true;
+  }
   }
 
   getData(): void {
@@ -45,7 +48,7 @@ export class DashboardComponent {
       this.dashboardDataService.saveDashboardData(this.dashboard!.developer,this.dashboard!.project,this.dashboard!.project_manager).subscribe((result: any) => {
         console.log("dashboard saved successfully");
         this.getData();
-        this.displayStyle='none'
+        this.render_dialog=false;
       }, (err: any) => {
         console.log(err);
       }
@@ -55,7 +58,7 @@ export class DashboardComponent {
       this.dashboardDataService.updateDashboardData(id,this.dashboard!.developer,this.dashboard!.project,this.dashboard!.project_manager).subscribe((result: any) => {
         console.log("dashboard saved successfully");
         this.getData();
-        this.displayStyle='none';
+        this.render_dialog=false;
       }, (err: any) => {
         console.log(err);
       }
@@ -82,21 +85,21 @@ export class DashboardComponent {
     }
     );
 
-    this.displayStyle = "block";
+    this.render_dialog=true;
   }
 
   openPopupDelete(id: any) {
 
     this.id=id;
 
-    this.displayStyle1 = "block";
+    this.render_dialog1=true;
   }
 
   deleteData(){
     this.dashboardDataService.deleteDashboardData(this.id).subscribe((data: any) => {
       console.log("dashboard data deleted successfully");
       this.getData();
-      this.displayStyle1="none";
+      this.render_dialog1=false;
     }, (err: any) => {
       console.log(err);
     }
@@ -106,8 +109,8 @@ export class DashboardComponent {
   }
 
   closePopup() {
-    this.displayStyle = "none";
-    this.displayStyle1="none";
+    this.render_dialog=false;
+    this.render_dialog1=false;
   }
 
   getProjects(){

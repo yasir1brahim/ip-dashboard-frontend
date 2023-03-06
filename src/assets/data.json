@@ -7,16 +7,10 @@
   ],
   "dashboards": [
     {
-      "developer": "ab",
-      "project": "project1",
-      "project_manager": "a",
-      "id": 2
-    },
-    {
-      "developer": "waqar",
+      "developer": "abc",
       "project": "project2",
-      "project_manager": "daniyal",
-      "id": 3
+      "project_manager": "abc",
+      "id": 2
     }
   ],
   "requirements": [
@@ -27,16 +21,10 @@
       "id": 1
     },
     {
-      "project": "project1",
-      "resource": "name2",
-      "hours": "1",
-      "id": 2
-    },
-    {
       "project": "project2",
       "resource": "name2",
-      "hours": "1",
-      "id": 3
+      "hours": "2",
+      "id": 2
     }
   ],
   "project_manager": [
@@ -85,6 +73,66 @@
     {
       "name": "a",
       "id": "1K-gIPM"
+    },
+    {
+      "name": "abc",
+      "id": "ZQTD3jS"
+    },
+    {
+      "name": "a",
+      "id": "YPVxSjo"
     }
+  ],
+  "projectlist": [
+    {
+      "id": "1",
+      "project": "project1",
+      "resources": "3"
+    },
+    {
+      "id": "2",
+      "project": "project2",
+      "resources": "2"
+    },
+    {
+      "id": "3",
+      "project": "project3",
+      "resources": "5"
+    }
+  ],
+  "availability": [
+    {
+      "available": [
+        {
+          "name": "name1"
+        },
+        {
+          "name": "name2"
+        },
+        {
+          "name": "name3"
+        }
+      ],
+      "onLeave": [
+        {
+          "name": "name4"
+        }
+      ],
+      "notYetIn": [
+        {
+          "name": "name7"
+        },
+        {
+          "name": "name8"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    "name1",
+    "name2",
+    "name3",
+    "name4",
+    "name5"
   ]
 }

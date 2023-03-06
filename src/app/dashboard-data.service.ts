@@ -65,15 +65,15 @@ not_yet_in:string[]=['Name7','Name8','Name9','Name10'];
   }
 
   getProjectListData(): Observable<any> {
-  return this.http.get<any[]>('assets/projectlist.json');
+  return this.http.get<any[]>(environment.backendBaseAddress+'projectlist');
   }
 
   getAvailability(): Observable<any>{
-    return this.http.get<any[]>('assets/availability.json');
+    return this.http.get<any[]>(environment.backendBaseAddress+'availability');
   }
 
   getResources(): Observable<any>{
-  return this.http.get<any[]>('assets/resources.json');
+  return this.http.get<any[]>(environment.backendBaseAddress+'resources');
   }
   getRequirements():Observable<any>{
     return this.http.get<any[]>(environment.backendBaseAddress+'requirements');

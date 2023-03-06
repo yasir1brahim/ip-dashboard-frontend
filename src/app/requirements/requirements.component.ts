@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DashboardDataService } from '../dashboard-data.service';
 import { ProjectList } from '../project-list/model/project-list';
 import { Requirements } from './model/requirements';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-requirements',
@@ -10,27 +11,31 @@ import { Requirements } from './model/requirements';
 })
 export class RequirementsComponent {
   requirements:Requirements[]=[];
-  requirement:Requirements={"id":"1","project":"project3","resource":"name1","hours":"0"};
+  requirement:Requirements;
   projects: any;
   resources:any;
-  constructor(private dashboardDataService: DashboardDataService){
+  constructor(private dashboardDataService: DashboardDataService, private authService:AuthService){
   }
 
   id:any;
-  displayStyle1="none";
-  displayStyle = "none";
+  render_dialog=false;
+  render_dialog1=false;
   admin:boolean=false;
 
   ngOnInit(){
     this.getProjects();
     this.getRequirements();
     this.getResources();
+    if (this.authService.getSession('user_role') == "ADMIN") {
+      this.admin = true;
+  }
   }
   
   
   getProjects(){
     this.dashboardDataService.getProjects().subscribe((projects: any) => {
       this.projects= projects
+      console.log(projects)
   }, (err: any) => {
       console.log(err);
   }
@@ -51,7 +56,7 @@ export class RequirementsComponent {
       this.dashboardDataService.saveRequirements(this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
         console.log("requirements saved successfully");
         this.getRequirements();
-       this.displayStyle='none';
+       this.render_dialog=false
     }, (err: any) => {
         console.log(err);
     }
@@ -61,7 +66,7 @@ export class RequirementsComponent {
       this.dashboardDataService.updateRequirements(this.requirement.id,this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
         console.log("requirements saved successfully");
         this.getRequirements();
-       this.displayStyle='none';
+       this.render_dialog=false;
     }, (err: any) => {
         console.log(err);
     }
@@ -73,6 +78,7 @@ export class RequirementsComponent {
 
   getResources(){
     this.dashboardDataService.getResources().subscribe((resources: any) => {
+      //console.log("resources",resources)
       this.resources= resources;
   }, (err: any) => {
       console.log(err);
@@ -98,25 +104,25 @@ export class RequirementsComponent {
     }
     this.getResources();
     this.getProjects();
-    this.displayStyle = "block";
+    this.render_dialog=true;
   }
   closePopup() {
-    this.displayStyle = "none";
-    this.displayStyle1 = "none";
+    this.render_dialog=false;
+    this.render_dialog1=false;
   }
   
   openPopupDelete(id: any) {
 
     this.id=id;
 
-    this.displayStyle1 = "block";
+    this.render_dialog1=true;
   }
 
   deleteData(){
     this.dashboardDataService.deleteRequirementData(this.id).subscribe((data: any) => {
       console.log("requirement data deleted successfully");
       this.getRequirements();
-      this.displayStyle1="none";
+      this.render_dialog1=false;
     }, (err: any) => {
       console.log(err);
     }
