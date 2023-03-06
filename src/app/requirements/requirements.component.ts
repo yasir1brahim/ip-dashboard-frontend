@@ -11,7 +11,7 @@ import {AuthService} from '../auth.service';
 })
 export class RequirementsComponent {
   requirements:Requirements[]=[];
-  requirement:Requirements;
+  requirement:Requirements={"id":"1","project":"","resource":"","hours":""};
   projects: any;
   resources:any;
   constructor(private dashboardDataService: DashboardDataService, private authService:AuthService){

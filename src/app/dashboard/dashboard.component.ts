@@ -10,7 +10,7 @@ import { Dashboard } from './model/dashboard';
 })
 export class DashboardComponent {
   dashboards: Dashboard[] = [];
-  dashboard: Dashboard;
+  dashboard: Dashboard={ "id":"1", "developer": "", "project": "", "project_manager": "" };
   id:any;
   admin:boolean=false;
   render_dialog=false;
