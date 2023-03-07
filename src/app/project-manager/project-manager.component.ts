@@ -12,10 +12,11 @@ export class ProjectManagerComponent {
 dateToday:any;
   render_dialog=false;
   availabilityCount:number=0;
+  total:number=0;
 constructor(private dashboardDataService: DashboardDataService,private authService:AuthService,private datePipe:DatePipe){
   this.dateToday = this.datePipe.transform(new Date(),'fullDate')
 }
-
+  projects:any="";
   project_managers:any;
   name:any;
   admin:boolean=false;
@@ -33,6 +34,7 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
       // console.log("length");
       console.log(this.project_managers[0]);
       this.getAvailabilityCount();
+      this.getTotal();
       }, (err: any) => {
       console.log(err);
   }
@@ -44,7 +46,7 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
     this.render_dialog=true;
   }
   saveProjectManager(){
-    this.dashboardDataService.saveProjectManager(this.name).subscribe((requirements: any) => {
+    this.dashboardDataService.saveProjectManager(this.name,this.projects).subscribe((requirements: any) => {
       console.log("Project Manager saved successfully");
       this.getData();
       this.render_dialog=false;
@@ -59,6 +61,15 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
 
   getAvailabilityCount(){
    this.availabilityCount= this.dashboardDataService.getAvailabilityCount();
+  }
+
+  getTotal(){
+    this.total=0;
+    for(let i=0;i<this.project_managers.length;i++){
+      this.total+=this.project_managers[i].projects.length; 
+    }
+    this.total+=this.availabilityCount;
+    
   }
 
 }

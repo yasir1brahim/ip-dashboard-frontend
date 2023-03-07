@@ -15,6 +15,56 @@
       "developer": "a",
       "project": "project3",
       "id": 4
+    },
+    {
+      "developer": "a",
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
+    },
+    {
+      "developer": "a",
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
+    },
+    {
+      "developer": "a",
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
+    },
+    {
+      "developer": "a",
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
+    },
+    {
+      "developer": "a",
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
     }
   ],
   "requirements": [
@@ -29,6 +79,102 @@
       "resource": "name4",
       "hours": "5",
       "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
+    },
+    {
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
+    },
+    {
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
+    },
+    {
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
+    },
+    {
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
+    },
+    {
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
+    },
+    {
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
+    },
+    {
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
+    },
+    {
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
+    },
+    {
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
+    },
+    {
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
+    },
+    {
+      "project": "project4",
+      "resource": "name5",
+      "hours": "6",
+      "id": 4
     }
   ],
   "project_manager": [
@@ -38,7 +184,7 @@
       "projects": [
         {
           "project": "Project2",
-          "assignee": "Muhammad Waqar Anwar"
+          "assignee": "name1"
         }
       ]
     },
@@ -73,24 +219,94 @@
     {
       "name": "a",
       "id": "1K-gIPM",
-      "projects": [
-      ]
+      "projects": []
     },
     {
       "name": "abc",
-      "id": "ZQTD3jS"
+      "id": "ZQTD3jS",
+      "projects": []
     },
     {
       "name": "a",
-      "id": "YPVxSjo"
+      "id": "YPVxSjo",
+      "projects": []
     },
     {
       "name": "aaa",
-      "id": "1UCMeTj"
+      "id": "1UCMeTj",
+      "projects": []
+    },
+    {
+      "name": "abc",
+      "projects": "",
+      "id": "JHdojUf"
+    },
+    {
+      "name": "aaaa",
+      "projects": "",
+      "id": "3iVtk5w"
     }
   ],
   "projectlist": [
     {
+      "id": "1",
+      "project": "project1",
+      "resources": "3"
+    },
+    {
+      "id": "2",
+      "project": "project2",
+      "resources": "2"
+    },
+    {
+      "id": "3",
+      "project": "project3",
+      "resources": "5"
+    },
+    {
+      "id": "1",
+      "project": "project1",
+      "resources": "3"
+    },
+    {
+      "id": "2",
+      "project": "project2",
+      "resources": "2"
+    },
+    {
+      "id": "3",
+      "project": "project3",
+      "resources": "5"
+    },
+    {
+      "id": "1",
+      "project": "project1",
+      "resources": "3"
+    },
+    {
+      "id": "2",
+      "project": "project2",
+      "resources": "2"
+    },
+    {
+      "id": "3",
+      "project": "project3",
+      "resources": "5"
+    },    {
+      "id": "1",
+      "project": "project1",
+      "resources": "3"
+    },
+    {
+      "id": "2",
+      "project": "project2",
+      "resources": "2"
+    },
+    {
+      "id": "3",
+      "project": "project3",
+      "resources": "5"
+    },    {
       "id": "1",
       "project": "project1",
       "resources": "3"
@@ -109,6 +325,42 @@
   "availability": [
     {
       "available": [
+        {
+          "name": "name1"
+        },
+        {
+          "name": "name2"
+        },
+        {
+          "name": "name3"
+        },
+        {
+          "name": "name1"
+        },
+        {
+          "name": "name2"
+        },
+        {
+          "name": "name3"
+        },
+        {
+          "name": "name1"
+        },
+        {
+          "name": "name2"
+        },
+        {
+          "name": "name3"
+        },
+        {
+          "name": "name1"
+        },
+        {
+          "name": "name2"
+        },
+        {
+          "name": "name3"
+        },
         {
           "name": "name1"
         },

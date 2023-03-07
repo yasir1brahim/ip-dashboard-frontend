@@ -67,8 +67,8 @@ availabilityCount:number=0;
     return this.http.post<any>(environment.backendBaseAddress+'requirements', body);
   }
 
-  saveProjectManager(project_manager:any):Observable<any>{
-    const body = { name:project_manager };
+  saveProjectManager(project_manager:any,projects:any):Observable<any>{
+    const body = { name:project_manager,projects:projects };
     return this.http.post<any>(environment.backendBaseAddress+'project_manager', body);
   }
 

@@ -1,36 +1,39 @@
-<h2>
-    {{dateToday}}
-</h2>
-<div class="table-availability-container">
-    <table>
-        <tr>
-            <th>Available</th>
-        </tr>
-        <tr *ngFor="let a of available">
-            <td>
-                {{a.name}}
-            </td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <th>On Leave</th>
-        </tr>
-        <tr *ngFor="let o of onLeave">
-            <td>
-                {{o.name}}
-            </td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <th>Not Yet In</th>
-        </tr>
-        <tr *ngFor="let n of notYetIn">
-            <td>
-                {{n.name}}
-            </td>
-        </tr>
-    </table>
+<div style="overflow: auto;height:600px;">    
+    <h2>
+        {{dateToday}}
+    </h2>
+    <div class="table-availability-container">
+        <table>
+            <tr>
+                <th>Available</th>
+            </tr>
+            <tr *ngFor="let a of available">
+                <td>
+                    {{a.name}}
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>On Leave</th>
+            </tr>
+            <tr *ngFor="let o of onLeave">
+                <td>
+                    {{o.name}}
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Not Yet In</th>
+            </tr>
+            <tr *ngFor="let n of notYetIn">
+                <td>
+                    {{n.name}}
+                </td>
+            </tr>
+        </table>
+
+    </div>
 
 </div>

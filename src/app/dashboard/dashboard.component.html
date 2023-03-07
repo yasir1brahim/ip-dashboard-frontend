@@ -1,114 +1,116 @@
-<h2>
-  {{dateToday}}
-</h2>
-<button type="button" class="btn btn-primary" [disabled]="admin==false"
-(click)="openPopupDashboard(0)">Add
-</button>
-<table>
-    <tr>
-        <th>Names</th>
-        <th>Assigned Project</th>
-        <th>Assignee</th>
-        <th>Delete</th>
-    </tr>
-    <tr *ngFor="let dashboard of dashboards;index as i">
-        <td>
-            {{dashboard.developer}}
-        </td>
-        <td>
-            <select [(ngModel)]="dashboard.project" #selectedOption
-            (change)='onChange(dashboard.id,dashboard.developer,selectedOption.value)'>
-              <option *ngFor="let project of projects" [value]="project">{{project}}</option>
-            </select>
-        </td>
-        <td>
-            {{dashboard.project_manager}}
-        </td>
-        <td>
-          <button type="button" class="btn btn-danger" [disabled]="admin==false"
-            (click)="openPopupDelete(dashboard.id)">Delete
-          </button>
-        </td>
-    </tr>
-</table>
-
-
-
-
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Add</h4>
-        <button type="button" class="btn" 
-                (click)="closePopup()">
-                <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
-        </button>
-
-
-      </div>
-      <div class="modal-body">
-        <table>
-          <tr>
-            <td style="border:none;">
-              <label>Name</label>
-            </td>
-            <td style="border:none;">
-              <input type="text" [(ngModel)]="dashboard.developer">
-            </td>
-          </tr>
-          <tr>
-            <td style="border:none;">
-              <label>Project</label>
-            </td>
-            <td style="border:none;">
-              <select [(ngModel)]="dashboard.project" >
-                  <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+<div style="overflow: auto;height:600px;">  
+  <h2>
+    {{dateToday}}
+  </h2>
+  <button type="button" class="btn btn-primary" [disabled]="admin==false"
+  (click)="openPopupDashboard(0)">Add
+  </button>
+  <table>
+      <tr>
+          <th>Names</th>
+          <th>Assigned Project</th>
+          <th>Assignee</th>
+          <th>Delete</th>
+      </tr>
+      <tr *ngFor="let dashboard of dashboards;index as i">
+          <td>
+              {{dashboard.developer}}
+          </td>
+          <td>
+              <select [(ngModel)]="dashboard.project" #selectedOption
+              (change)='onChange(dashboard.id,dashboard.developer,selectedOption.value)'>
+                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
               </select>
-            </td>
-          </tr>
-        </table>
+          </td>
+          <td>
+              {{dashboard.project_manager}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" [disabled]="admin==false"
+              (click)="openPopupDelete(dashboard.id)">Delete
+            </button>
+          </td>
+      </tr>
+  </table>
 
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-success"
-        (click)="saveData()">
-        Save
-        </button>
+
+
+
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add</h4>
+          <button type="button" class="btn" 
+                  (click)="closePopup()">
+                  <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+          </button>
+
+
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td style="border:none;">
+                <label>Name</label>
+              </td>
+              <td style="border:none;">
+                <input type="text" [(ngModel)]="dashboard.developer">
+              </td>
+            </tr>
+            <tr>
+              <td style="border:none;">
+                <label>Project</label>
+              </td>
+              <td style="border:none;">
+                <select [(ngModel)]="dashboard.project" >
+                    <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+                </select>
+              </td>
+            </tr>
+          </table>
+
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-success"
+          (click)="saveData()">
+          Save
+          </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Delete</h4>
-        <button type="button" class="btn"
-        (click)="closePopup()">
-        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
-</button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" 
-        (click)="deleteData()">
-        Delete
-        </button>
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete</h4>
+          <button type="button" class="btn"
+          (click)="closePopup()">
+          <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+  </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" 
+          (click)="deleteData()">
+          Delete
+          </button>
 
+        </div>
       </div>
     </div>
   </div>

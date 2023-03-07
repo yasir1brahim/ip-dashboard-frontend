@@ -1,87 +1,102 @@
-<h2>
-  {{dateToday}}
-</h2>
-<button type="button" class="btn btn-primary"
-(click)="openPopupProjectManager()" [disabled]="admin==false">Add
-</button>
-<div *ngFor="let project_manager of project_managers;index as i">
+<div style="overflow: auto;height:600px;">
+  <h2>
+    {{dateToday}}
+  </h2>
+  <button type="button" class="btn btn-primary"
+  (click)="openPopupProjectManager()" [disabled]="admin==false">Add
+  </button>
+  <div *ngFor="let project_manager of project_managers;index as i">
+      <table>
+        <tr>
+          <td>
+            {{project_manager.name}}
+          </td>
+          <td>
+            <div *ngIf="project_manager.projects; else other" >
+              {{ project_manager.projects.length}}
+            </div>
+            <ng-template #other>
+              0
+            </ng-template>
+          </td>
+        </tr>
+          <tr>
+              <th>Projects</th>
+              <th>Resource</th>
+          </tr>
+          <tr *ngFor="let project of project_manager.projects;index as i">
+              <td>
+                  {{project.project}}
+              </td>
+              <td>
+                  {{project.assignee}}
+              </td>
+          </tr>
+
+      </table>
+      <br>
+  </div>
+  <div>
     <table>
       <tr>
         <td>
-          {{project_manager.name}}
+          Available/Leave/Not Yet In
         </td>
         <td>
-          <div *ngIf="project_manager.projects; else other" >
-            {{ project_manager.projects.length}}
-          </div>
-          <ng-template #other>
-            0
-          </ng-template>
+          {{availabilityCount}}
         </td>
       </tr>
-        <tr>
-            <th>Projects</th>
-            <th>Resource</th>
-        </tr>
-        <tr *ngFor="let project of project_manager.projects;index as i">
-            <td>
-                {{project.project}}
-            </td>
-            <td>
-                {{project.assignee}}
-            </td>
-        </tr>
-
     </table>
-    <br>
-</div>
-<div>
-  <table>
-    <tr>
-      <td>
-        Available/Leave/Not Yet In
-      </td>
-      <td>
-        {{availabilityCount}}
-      </td>
-    </tr>
-  </table>
-</div>
+  </div>
+  <br>
+  <div>
+    <table>
+      <tr>
+        <th>
+          Total
+        </th>
+        <td>
+          {{total}}
+        </td>
+      </tr>
+    </table>
+  </div>
 
 
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Add</h4>
-        <button type="button" class="btn" 
-        (click)="closePopup()">
-        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table>
-          <tr>
-            <td style="border:none">
-              <label>Name</label>
-            </td>
-            <td style="border:none">
-              <input type="text" [(ngModel)]="name">
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success"
-        (click)="saveProjectManager()">
-          Save
-        </button>
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add</h4>
+          <button type="button" class="btn" 
+          (click)="closePopup()">
+          <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td style="border:none">
+                <label>Name</label>
+              </td>
+              <td style="border:none">
+                <input type="text" [(ngModel)]="name">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success"
+          (click)="saveProjectManager()">
+            Save
+          </button>
 
 
+        </div>
       </div>
     </div>
   </div>

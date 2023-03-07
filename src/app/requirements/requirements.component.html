@@ -1,123 +1,125 @@
-<h2>
-  {{dateToday}}
-</h2>
-<button type="button" class="btn btn-primary" [disabled]="admin==false"
-(click)="openPopupRequirements(0)">Add
-</button>
-<table>
-    <tr>
-        <th>Project</th>
-        <th>Resources</th>
-        <th>Number of Hours</th>
-        <th>Delete</th>
-    </tr>
-    <tr *ngFor="let requirement of requirements;index as i">
-        <td>
-          <select [(ngModel)]="requirement.project" #selectedOption
-          (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
-            <option *ngFor="let project of projects" [value]="project">{{project}}</option>
-          </select>
+<div style="overflow: auto;height:600px;">  
+  <h2>
+    {{dateToday}}
+  </h2>
+  <button type="button" class="btn btn-primary" [disabled]="admin==false"
+  (click)="openPopupRequirements(0)">Add
+  </button>
+  <table>
+      <tr>
+          <th>Project</th>
+          <th>Resources</th>
+          <th>Number of Hours</th>
+          <th>Delete</th>
+      </tr>
+      <tr *ngFor="let requirement of requirements;index as i">
+          <td>
+            <select [(ngModel)]="requirement.project" #selectedOption
+            (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
+              <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+            </select>
+          </td>
+          <td>
+            <select [(ngModel)]="requirement.resource" #selectedOption1
+            (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
+              <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
+            </select>
+          </td>
+          <td>
+              <input type="text" [(ngModel)]="requirement.hours" (keydown.enter)="onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)">
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" [disabled]="admin==false"
+                (click)="openPopupDelete(requirement.id)">Delete
+            </button>
         </td>
-        <td>
-          <select [(ngModel)]="requirement.resource" #selectedOption1
-          (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
-            <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
-          </select>
-        </td>
-        <td>
-            <input type="text" [(ngModel)]="requirement.hours" (keydown.enter)="onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)">
-        </td>
-        <td>
-          <button type="button" class="btn btn-danger" [disabled]="admin==false"
-              (click)="openPopupDelete(requirement.id)">Delete
+      </tr>
+  </table>
+
+
+
+
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add</h4>
+          <button type="button" class="btn" 
+          (click)="closePopup()">
+          <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
           </button>
-      </td>
-    </tr>
-</table>
-
-
-
-
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Add</h4>
-        <button type="button" class="btn" 
-        (click)="closePopup()">
-        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table >
-          <tr>
-            <td style="border:none">
-              <labeL>Project</labeL>
-            </td>
-            <td style="border:none">
-              <select [(ngModel)]="requirement.project">
-                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td style="border:none">
-              <label>Resource</label>
-            </td>
-            <td style="border:none">
-              <select [(ngModel)]="requirement.resource">
-                <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td style="border:none">
-              <label>Hours</label>
-            </td>
-            <td style="border:none">
-              <input type="text" [(ngModel)]="requirement.hours">
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" 
-        (click)="saveRequirements()">
-          Save
-        </button>
+        </div>
+        <div class="modal-body">
+          <table >
+            <tr>
+              <td style="border:none">
+                <labeL>Project</labeL>
+              </td>
+              <td style="border:none">
+                <select [(ngModel)]="requirement.project">
+                  <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td style="border:none">
+                <label>Resource</label>
+              </td>
+              <td style="border:none">
+                <select [(ngModel)]="requirement.resource">
+                  <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td style="border:none">
+                <label>Hours</label>
+              </td>
+              <td style="border:none">
+                <input type="text" [(ngModel)]="requirement.hours">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" 
+          (click)="saveRequirements()">
+            Save
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div
-  class="modal"
-  tabindex="-1"
-  role="dialog"
-  [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Delete</h4>
-        <button type="button" class="btn" 
-        (click)="closePopup()">
-        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" 
-        (click)="deleteData()">
-        Delete
-        </button>
- 
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete</h4>
+          <button type="button" class="btn" 
+          (click)="closePopup()">
+          <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" 
+          (click)="deleteData()">
+          Delete
+          </button>
+  
+        </div>
       </div>
     </div>
   </div>
