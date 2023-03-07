@@ -51,8 +51,7 @@ export class RequirementsComponent {
   );
   }
 
-  saveRequirements(id:any){
-    if(id==0){
+  saveRequirements(){
       this.dashboardDataService.saveRequirements(this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
         console.log("requirements saved successfully");
         this.getRequirements();
@@ -61,17 +60,6 @@ export class RequirementsComponent {
         console.log(err);
     }
     );
-    }
-    else{
-      this.dashboardDataService.updateRequirements(this.requirement.id,this.requirement.project,this.requirement.resource,this.requirement.hours).subscribe((requirements: any) => {
-        console.log("requirements saved successfully");
-        this.getRequirements();
-       this.render_dialog=false;
-    }, (err: any) => {
-        console.log(err);
-    }
-    );
-    }
 
     
   }
@@ -88,20 +76,10 @@ export class RequirementsComponent {
 
 
   openPopupRequirements(id:any) {
-    if(id==0){
       this.requirement.project='';
       this.requirement.resource='';
       this.requirement.hours='';
       this.requirement.id='0';
-    }
-    else{
-      this.dashboardDataService.getRequirementDataSingleRecord(id).subscribe((requirement: any) => {
-        this.requirement = requirement;
-      }, (err: any) => {
-        console.log(err);
-      }
-      );
-    }
     this.getResources();
     this.getProjects();
     this.render_dialog=true;
@@ -128,9 +106,19 @@ export class RequirementsComponent {
     }
     );
    
-
+  
     
   }
 
+  onChange(id:any,project:any,resource:any,hours:any){
+    this.dashboardDataService.updateRequirements(id,project,resource,hours).subscribe((requirements: any) => {
+      console.log("requirements saved successfully");
+      this.getRequirements();
+     this.render_dialog=false;
+  }, (err: any) => {
+      console.log(err);
+  }
+  );
+  }
 
 }

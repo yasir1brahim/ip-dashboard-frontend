@@ -79,8 +79,8 @@ not_yet_in:string[]=['Name7','Name8','Name9','Name10'];
     return this.http.get<any[]>(environment.backendBaseAddress+'requirements');
   }
 
-  saveDashboardData(developer: any, project: any,project_manager:any): Observable<any> {
-    const body = { developer:developer, project: project,project_manager:project_manager };
+  saveDashboardData(developer: any, project: any): Observable<any> {
+    const body = { developer:developer, project: project};
     return this.http.post<any>(environment.backendBaseAddress+'dashboards', body);
   }
 
@@ -100,8 +100,8 @@ not_yet_in:string[]=['Name7','Name8','Name9','Name10'];
       /*params: { id: id }  */ } );
   }
 
-  updateDashboardData(id:any,developer:any,project:any,project_manager:any): Observable<any> {
-    const body = { developer:developer, project:project,project_manager:project_manager };
+  updateDashboardData(id:any,developer:any,project:any): Observable<any> {
+    const body = {developer:developer, project:project };
     return this.http.put<any>(environment.backendBaseAddress+'dashboards/'+id, body,
     {/* params:{id:id,developer:developer,project:project,project_manager:project_manager}*/
     }, );

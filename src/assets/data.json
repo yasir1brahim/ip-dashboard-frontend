@@ -8,23 +8,27 @@
   "dashboards": [
     {
       "developer": "a",
-      "project": "project1",
-      "project_manager": "a",
-      "id": 1
+      "project": "project2",
+      "id": 3
+    },
+    {
+      "developer": "a",
+      "project": "project3",
+      "id": 4
     }
   ],
   "requirements": [
     {
-      "project": "project1",
-      "resource": "name1",
-      "hours": "12",
-      "id": 1
+      "project": "project2",
+      "resource": "name4",
+      "hours": "8",
+      "id": 2
     },
     {
-      "project": "project2",
-      "resource": "name2",
-      "hours": "2",
-      "id": 2
+      "project": "project3",
+      "resource": "name4",
+      "hours": "5",
+      "id": 3
     }
   ],
   "project_manager": [
@@ -81,6 +85,10 @@
     {
       "name": "a",
       "id": "YPVxSjo"
+    },
+    {
+      "name": "aaa",
+      "id": "1UCMeTj"
     }
   ],
   "projectlist": [

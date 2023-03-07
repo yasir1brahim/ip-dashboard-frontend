@@ -6,7 +6,6 @@
         <th>Names</th>
         <th>Assigned Project</th>
         <th>Assignee</th>
-        <th>Edit</th>
         <th>Delete</th>
     </tr>
     <tr *ngFor="let dashboard of dashboards;index as i">
@@ -14,15 +13,13 @@
             {{dashboard.developer}}
         </td>
         <td>
-            {{dashboard.project}}
+            <select [(ngModel)]="dashboard.project" #selectedOption
+            (change)='onChange(dashboard.id,dashboard.developer,selectedOption.value)'>
+              <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+            </select>
         </td>
         <td>
             {{dashboard.project_manager}}
-        </td>
-        <td>
-            <button type="button" class="btn btn-success" [disabled]="admin==false"
-                (click)="openPopupDashboard(dashboard.id)">Edit
-            </button>
         </td>
         <td>
           <button type="button" class="btn btn-danger" [disabled]="admin==false"
@@ -43,7 +40,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Edit</h4>
+        <h4 class="modal-title">Add</h4>
         <button type="button" class="btn" 
                 (click)="closePopup()">
                 <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
@@ -71,28 +68,14 @@
               </select>
             </td>
           </tr>
-          <tr>
-            <td style="border:none;">
-              <label>Assignee</label> 
-            </td>
-            <td style="border:none;">     
-              <input type="text" [(ngModel)]="dashboard.project_manager">
-            </td>
-          </tr>
         </table>
 
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-success" *ngIf="dashboard.id!='0'; else other"
-        (click)="saveData(dashboard.id)">
+        <button type="button" class="btn btn-success"
+        (click)="saveData()">
         Save
         </button>
-        <ng-template #other>
-          <button type="button" class="btn btn-success"
-          (click)="saveData(0)">
-          Save
-          </button>
-        </ng-template>
         </div>
       </div>
     </div>
