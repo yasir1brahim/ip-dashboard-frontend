@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { DashboardDataService } from '../dashboard-data.service';
@@ -6,17 +7,20 @@ import { Dashboard } from './model/dashboard';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers:[DatePipe]
 })
 export class DashboardComponent {
   dashboards: Dashboard[] = [];
   dashboard: Dashboard={ "id":"1", "developer": "", "project": "", "project_manager": "" };
   id: any;
+  dateToday:any;
   admin: boolean = false;
   render_dialog = false;
   render_dialog1 = false;
   projects: any;
-  constructor(private dashboardDataService: DashboardDataService, private authService: AuthService) {
+  constructor(private dashboardDataService: DashboardDataService, private authService: AuthService,private datePipe:DatePipe) {
+    this.dateToday = this.datePipe.transform(new Date(),'fullDate');
   }
 
   ngOnInit() {

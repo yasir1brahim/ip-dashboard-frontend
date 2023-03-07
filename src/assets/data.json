@@ -37,12 +37,8 @@
       "name": "name1",
       "projects": [
         {
-          "project": "Project1",
-          "assignee": "name11"
-        },
-        {
           "project": "Project2",
-          "assignee": "name11"
+          "assignee": "Muhammad Waqar Anwar"
         }
       ]
     },
@@ -76,7 +72,9 @@
     },
     {
       "name": "a",
-      "id": "1K-gIPM"
+      "id": "1K-gIPM",
+      "projects": [
+      ]
     },
     {
       "name": "abc",

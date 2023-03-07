@@ -1,15 +1,18 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { DashboardDataService } from '../dashboard-data.service';
 
 @Component({
   selector: 'app-availability',
   templateUrl: './availability.component.html',
-  styleUrls: ['./availability.component.css']
+  styleUrls: ['./availability.component.css'],
+  providers: [DatePipe]
 })
 export class AvailabilityComponent {
-
-constructor(private dashboardDataService: DashboardDataService){
+dateToday:any;
+constructor(private dashboardDataService: DashboardDataService, private datePipe:DatePipe){
 this.getAvailability();
+this.dateToday = this.datePipe.transform(new Date(),'fullDate');
 }
 available:any | undefined;
 onLeave:any | undefined;
@@ -20,7 +23,9 @@ getAvailability(): void {
       this.available= availability[0].available;
       this.onLeave=availability[0].onLeave;
       this.notYetIn=availability[0].notYetIn;
-      //console.log(availability);
+      console.log(availability[0].available.length);
+      let availabilityCount=parseInt(availability[0].available.length)+parseInt(availability[0].onLeave.length)+parseInt(availability[0].notYetIn.length)
+      this.dashboardDataService.setAvailabilityCount(availabilityCount);
   }, (err: any) => {
       console.log(err);
   }

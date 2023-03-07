@@ -3,18 +3,22 @@ import { DashboardDataService } from '../dashboard-data.service';
 import { ProjectList } from '../project-list/model/project-list';
 import { Requirements } from './model/requirements';
 import {AuthService} from '../auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-requirements',
   templateUrl: './requirements.component.html',
-  styleUrls: ['./requirements.component.css']
+  styleUrls: ['./requirements.component.css'],
+  providers:[DatePipe]
 })
 export class RequirementsComponent {
+  dateToday:any;
   requirements:Requirements[]=[];
   requirement:Requirements={"id":"1","project":"","resource":"","hours":""};
   projects: any;
   resources:any;
-  constructor(private dashboardDataService: DashboardDataService, private authService:AuthService){
+  constructor(private dashboardDataService: DashboardDataService, private authService:AuthService,private datePipe:DatePipe){
+    this.dateToday = this.datePipe.transform(new Date(),'fullDate')
   }
 
   id:any;

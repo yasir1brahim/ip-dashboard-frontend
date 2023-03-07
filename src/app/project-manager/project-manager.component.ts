@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { DashboardDataService } from '../dashboard-data.service';
 import { AuthService } from '../auth.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-project-manager',
   templateUrl: './project-manager.component.html',
-  styleUrls: ['./project-manager.component.css']
+  styleUrls: ['./project-manager.component.css'],
+  providers:[DatePipe]
 })
 export class ProjectManagerComponent {
-
+dateToday:any;
   render_dialog=false;
-
-constructor(private dashboardDataService: DashboardDataService,private authService:AuthService){}
+  availabilityCount:number=0;
+constructor(private dashboardDataService: DashboardDataService,private authService:AuthService,private datePipe:DatePipe){
+  this.dateToday = this.datePipe.transform(new Date(),'fullDate')
+}
 
   project_managers:any;
   name:any;
@@ -28,7 +32,8 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
       this.project_managers=project_managers
       // console.log("length");
       console.log(this.project_managers[0]);
-  }, (err: any) => {
+      this.getAvailabilityCount();
+      }, (err: any) => {
       console.log(err);
   }
   );
@@ -52,5 +57,8 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
     this.render_dialog=false;
   }
 
+  getAvailabilityCount(){
+   this.availabilityCount= this.dashboardDataService.getAvailabilityCount();
+  }
 
 }
