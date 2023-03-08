@@ -11,7 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width:800px
   }
   
-  table {
+   table {
     flex-basis: 50%;
     flex-grow: 1;
     margin: 0;
@@ -22,9 +22,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   th, td {
     padding: 8px;
     border: 1px solid #ddd;
-    text-align: center !important;
+    text-align: center;
     vertical-align: middle !important
-  }
+  } 
 
   ._mat-animation-noopable span.mdc-tab__text-label {
     color: #c2185b;
@@ -33,5 +33,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 select.dropdown{
   word-wrap: break-word;
   white-space: normal;
+  max-width: 120px;
+}
+
+
+
+table.table-popup td,
+table.table-popup th {
+  text-align:left !important;
+}
+
+input.text-box{
   max-width: 120px;
 }

@@ -54,13 +54,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <table >
+          <table class="table-popup">
             <tr>
               <td style="border:none">
                 <labeL>Project</labeL>
               </td>
               <td style="border:none">
-                <select [(ngModel)]="requirement.project">
+                <select [(ngModel)]="requirement.project" class="dropdown">
                   <option *ngFor="let project of projects" [value]="project">{{project}}</option>
                 </select>
               </td>
@@ -70,7 +70,7 @@
                 <label>Resource</label>
               </td>
               <td style="border:none">
-                <select [(ngModel)]="requirement.resource">
+                <select [(ngModel)]="requirement.resource" class="dropdown">
                   <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
                 </select>
               </td>
@@ -80,7 +80,7 @@
                 <label>Hours</label>
               </td>
               <td style="border:none">
-                <input type="text" [(ngModel)]="requirement.hours">
+                <input type="text" [(ngModel)]="requirement.hours" class="text-box">
               </td>
             </tr>
           </table>

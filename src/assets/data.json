@@ -8,16 +8,6 @@
   "dashboards": [
     {
       "developer": "a",
-      "project": "project4444444 444444",
-      "id": 2
-    },
-    {
-      "developer": "a",
-      "project": "project3",
-      "id": 3
-    },
-    {
-      "developer": "a",
       "project": "project2",
       "id": 4
     },
