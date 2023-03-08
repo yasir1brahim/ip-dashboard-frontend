@@ -5,7 +5,7 @@
   <button type="button" class="btn btn-primary" [disabled]="admin==false"
   (click)="openPopupDashboard(0)">Add
   </button>
-  <table>
+  <table style="table-layout:fixed" width="600">
       <tr>
           <th>Names</th>
           <th>Assigned Project</th>
@@ -17,7 +17,7 @@
               {{dashboard.developer}}
           </td>
           <td>
-              <select [(ngModel)]="dashboard.project" #selectedOption
+              <select [(ngModel)]="dashboard.project" #selectedOption class="dropdown"
               (change)='onChange(dashboard.id,dashboard.developer,selectedOption.value)'>
                 <option *ngFor="let project of projects" [value]="project">{{project}}</option>
               </select>

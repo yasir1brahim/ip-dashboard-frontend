@@ -8,6 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .table-availability-container {
     display: flex;
     align-items: flex-start;
+    width:800px
   }
   
   table {
@@ -21,10 +22,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   th, td {
     padding: 8px;
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center !important;
+    vertical-align: middle !important
   }
 
   ._mat-animation-noopable span.mdc-tab__text-label {
     color: #c2185b;
 }
 
+select.dropdown{
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 120px;
+}

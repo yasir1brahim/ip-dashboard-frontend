@@ -5,28 +5,28 @@
   <button type="button" class="btn btn-primary" [disabled]="admin==false"
   (click)="openPopupRequirements(0)">Add
   </button>
-  <table>
+  <table style="table-layout:fixed" width="600">
       <tr>
           <th>Project</th>
           <th>Resources</th>
-          <th>Number of Hours</th>
+          <th>Hours</th>
           <th>Delete</th>
       </tr>
       <tr *ngFor="let requirement of requirements;index as i">
           <td>
-            <select [(ngModel)]="requirement.project" #selectedOption
+            <select [(ngModel)]="requirement.project" #selectedOption class="dropdown"
             (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
               <option *ngFor="let project of projects" [value]="project">{{project}}</option>
             </select>
           </td>
           <td>
-            <select [(ngModel)]="requirement.resource" #selectedOption1
+            <select [(ngModel)]="requirement.resource" #selectedOption1 class="dropdown"
             (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
               <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
             </select>
           </td>
           <td>
-              <input type="text" [(ngModel)]="requirement.hours" (keydown.enter)="onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)">
+              <input type="text" [(ngModel)]="requirement.hours" (keydown.enter)="onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)" style="width:80px">
           </td>
           <td>
             <button type="button" class="btn btn-danger" [disabled]="admin==false"
