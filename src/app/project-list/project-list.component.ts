@@ -29,7 +29,7 @@ getData(){
     this.projectList= projectList
     this.total=0;
     for(let i=0;i<projectList.length;i++){
-      this.total+=parseInt(projectList[i].resources);
+      this.total+=parseInt(projectList[i].number_resources);
     }
     
 }, (err: any) => {

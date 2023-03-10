@@ -1,134 +1,113 @@
 {
   "projects": [
-    "project1",
-    "project2",
-    "project3",
-    "project4444444 444444"
+    {
+      "id": "2",
+      "project": "project1"
+    },
+    {
+      "id": "3",
+      "project": "project2"
+    },
+    {
+      "id": "4",
+      "project": "project3"
+    },
+    {
+      "id": "5",
+      "project": "project4444 444444444 44444444"
+    }
   ],
   "dashboards": [
     {
       "developer": "a",
-      "project": "project2",
-      "id": 4
-    },
-    {
-      "developer": "a",
-      "project": "project3",
-      "id": 5
-    },
-    {
-      "developer": "a",
-      "project": "project2",
-      "id": 6
-    },
-    {
-      "developer": "a",
-      "project": "project3",
-      "id": 7
-    },
-    {
-      "developer": "a",
-      "project": "project2",
-      "id": 8
-    },
-    {
-      "developer": "a",
-      "project": "project3",
-      "id": 9
-    },
-    {
-      "developer": "a",
-      "project": "project2",
-      "id": 10
-    },
-    {
-      "developer": "a",
-      "project": "project3",
-      "id": 11
-    },
-    {
-      "developer": "a",
-      "project": "project2",
-      "id": 12
-    },
-    {
-      "developer": "a",
-      "project": "project3",
+      "project": "3",
       "id": 13
+    },
+    {
+      "developer": "b",
+      "project": "3",
+      "id": 14
+    },
+    {
+      "developer": "c",
+      "project": "4",
+      "id": 15
+    },
+    {
+      "developer": "d",
+      "project": "5",
+      "id": 16
+    },
+    {
+      "developer": "e",
+      "project": "5",
+      "id": 17
+    },
+    {
+      "developer": "f",
+      "project": "3",
+      "id": 18
+    },
+    {
+      "developer": "a",
+      "project": "3",
+      "id": 19
     }
   ],
   "requirements": [
     {
-      "project": "project4444444 444444",
-      "resource": "name55555 555555555555",
+      "project": "4",
+      "resource": "6",
       "hours": "8",
       "id": 2
     },
     {
-      "project": "project3",
-      "resource": "name3",
+      "project": "2",
+      "resource": "4",
       "hours": "5",
       "id": 3
     },
     {
-      "project": "project2",
-      "resource": "name2",
+      "project": "4",
+      "resource": "3",
       "hours": "8",
       "id": 4
     },
     {
-      "project": "project3",
-      "resource": "name4",
+      "project": "3",
+      "resource": "4",
       "hours": "5",
       "id": 5
     },
     {
-      "project": "project2",
-      "resource": "name55555 555555555555",
+      "project": "5",
+      "resource": "6",
       "hours": "8",
       "id": 6
     },
     {
-      "project": "project3",
-      "resource": "name2",
+      "project": "2",
+      "resource": "5",
       "hours": "5",
       "id": 7
     },
     {
-      "project": "project2",
-      "resource": "name55555 555555555555",
+      "project": "3",
+      "resource": "5",
       "hours": "8",
       "id": 8
     },
     {
-      "project": "project3",
-      "resource": "name55555 555555555555",
+      "project": "4",
+      "resource": "4",
       "hours": "5",
       "id": 9
     },
     {
-      "project": "project2",
-      "resource": "name4",
+      "project": "5",
+      "resource": "5",
       "hours": "8",
       "id": 10
-    },
-    {
-      "project": "project3",
-      "resource": "name4",
-      "hours": "5",
-      "id": 11
-    },
-    {
-      "project": "project2",
-      "resource": "name4",
-      "hours": "8",
-      "id": 12
-    },
-    {
-      "project": "project3",
-      "resource": "name4",
-      "hours": "5",
-      "id": 13
     }
   ],
   "project_manager": [
@@ -343,10 +322,37 @@
     }
   ],
   "resources": [
-    "name1",
-    "name2",
-    "name3",
-    "name4",
-    "name55555 555555555555"
+    {
+      "id": "2",
+      "resource": "name1"
+    },
+    {
+      "id": "3",
+      "resource": "name1"
+    },
+    {
+      "id": "4",
+      "resource": "name1"
+    },
+    {
+      "id": "5",
+      "resource": "name1"
+    },
+    {
+      "id": "6",
+      "resource": "name5555 555555555555"
+    }
+  ],
+  "ppms": [
+    {
+      "project": "project1",
+      "project_manager": "pm1",
+      "id": 2
+    }
+  ],
+  "project_manager_list": [
+    "pm1",
+    "pm2",
+    "pm3"
   ]
 }

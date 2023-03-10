@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard';
 import { MainComponent } from './main/main.component';
+import { ProjectProjectManagerComponent } from './project-project-manager/project-project-manager.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MainComponent } from './main/main.component';
     RequirementsComponent,
     ProjectManagerComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    ProjectProjectManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AvailabilityComponent,ProjectListComponent,ProjectManagerComponent,
+    ProjectProjectManagerComponent,DashboardComponent,RequirementsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

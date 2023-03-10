@@ -1,0 +1,113 @@
+<div>  
+    <h2>
+      {{dateToday}}
+    </h2>
+    <button type="button" class="btn btn-primary"
+    (click)="openPopupPPM(0)">Add
+    </button>
+    <table style="table-layout:fixed" width="600">
+        <tr>
+            <th>Project</th>
+            <th>Project Manager</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let ppm of ppms;index as i">
+            <td>
+                {{ppm.name}}
+            </td>
+            <td>
+                <select [(ngModel)]="ppm.project_manager" #selectedOption class="dropdown"
+                (change)='onChange(ppm.project_id,ppm.name,selectedOption.value)'>
+                  <option *ngFor="let pm of project_managers" [value]="pm.manager_id">{{pm.name}}</option>
+                </select>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" 
+                (click)="openPopupDelete(ppm.project_id)">Delete
+              </button>
+            </td>
+        </tr>
+    </table>
+  
+  
+  
+  
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{'display':'block'}" *ngIf="render_dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add</h4>
+            <button type="button" class="btn" 
+                    (click)="closePopup()">
+                    <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+            </button>
+  
+  
+          </div>
+          <div class="modal-body">
+            <table class="table-popup">
+              <tr>
+                <td style="border:none;">
+                  <label>Project</label>
+                </td>
+                <td style="border:none;">
+                  <input type="text" [(ngModel)]="ppm.name" class="text-box">
+                </td>
+              </tr>
+              <tr>
+                <td style="border:none;">
+                  <label>Project Manager</label>
+                </td>
+                <td style="border:none;">
+                  <select [(ngModel)]="ppm.project_manager" class="dropdown">
+                      <option *ngFor="let pm of project_managers" [value]="pm.manager_id">{{pm.name}}</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+  
+          <div class="modal-footer">
+            
+            <button type="button" class="btn btn-success"
+            (click)="saveData()">
+            Save
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{'display':'block'}" *ngIf="render_dialog1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Delete</h4>
+            <button type="button" class="btn"
+            (click)="closePopup()">
+            <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+    </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" 
+            (click)="deleteData()">
+            Delete
+            </button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

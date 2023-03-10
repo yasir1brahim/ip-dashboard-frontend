@@ -1,8 +1,8 @@
 export class ProjectList {
 
     constructor(
-        public project    :           string,
-        public resources   :           string,
-        public id?        :           string
+        public name    :           string,
+        //public number_resources   :           string,
+        public project_id?        :           string
     ){}
 }

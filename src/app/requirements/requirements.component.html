@@ -16,13 +16,13 @@
           <td>
             <select [(ngModel)]="requirement.project" #selectedOption class="dropdown"
             (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
-              <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+              <option *ngFor="let project of projects" [value]="project.project_id">{{project.name}}</option>
             </select>
           </td>
           <td>
             <select [(ngModel)]="requirement.resource" #selectedOption1 class="dropdown"
             (change)='onChange(requirement.id,selectedOption.value,selectedOption1.value,requirement.hours)'>
-              <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
+              <option *ngFor="let resource of resources" [value]="resource.resource_id">{{resource.name}}</option>
             </select>
           </td>
           <td>
@@ -61,7 +61,7 @@
               </td>
               <td style="border:none">
                 <select [(ngModel)]="requirement.project" class="dropdown">
-                  <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+                  <option *ngFor="let project of projects" [value]="project.project_id">{{project.name}}</option>
                 </select>
               </td>
             </tr>
@@ -71,7 +71,7 @@
               </td>
               <td style="border:none">
                 <select [(ngModel)]="requirement.resource" class="dropdown">
-                  <option *ngFor="let resource of resources" [value]="resource">{{resource}}</option>
+                  <option *ngFor="let resource of resources" [value]="resource.resource_id">{{resource.name}}</option>
                 </select>
               </td>
             </tr>

@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { DashboardDataService } from '../dashboard-data.service';
 import { Dashboard } from './model/dashboard';
+import { AvailabilityComponent } from '../availability/availability.component';
+import { ProjectListComponent } from '../project-list/project-list.component';
+import { ProjectManagerComponent } from '../project-manager/project-manager.component';
+import { RequirementsComponent } from '../requirements/requirements.component';
+import { ProjectProjectManagerComponent } from '../project-project-manager/project-project-manager.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,14 +17,18 @@ import { Dashboard } from './model/dashboard';
 })
 export class DashboardComponent {
   dashboards: Dashboard[] = [];
-  dashboard: Dashboard={ "id":"1", "developer": "", "project": "", "project_manager": "" };
+  dashboard: Dashboard={ "resource_id":"0", "name": "", "projectAssigned": "", "projectManager": "" };
   id: any;
   dateToday:any;
   admin: boolean = false;
   render_dialog = false;
   render_dialog1 = false;
   projects: any;
-  constructor(private dashboardDataService: DashboardDataService, private authService: AuthService,private datePipe:DatePipe) {
+  projectsPopup:any;
+  constructor(private dashboardDataService: DashboardDataService, 
+    private authService: AuthService,private datePipe:DatePipe,private availabilityComponent:AvailabilityComponent,
+    private projectListComponent:ProjectListComponent,private projectManagerComponent:ProjectManagerComponent,
+    private requirementsComponent:RequirementsComponent,private projectProjectManagerComponent:ProjectProjectManagerComponent) {
     this.dateToday = this.datePipe.transform(new Date(),'fullDate');
   }
 
@@ -44,9 +53,14 @@ export class DashboardComponent {
   }
 
   saveData() {
-      this.dashboardDataService.saveDashboardData(this.dashboard!.developer, this.dashboard!.project).subscribe((result: any) => {
+      this.dashboardDataService.saveDashboardData(this.dashboard!.name/*, this.dashboard!.projectAssigned,this.dashboard!.projectManager*/).subscribe((result: any) => {
         console.log("dashboard saved successfully");
         this.getData();
+        this.getAvailabilityData();
+        this.getProjectListData();
+        this.getProjectManagerData();
+        this.getRequirementsData();
+        this.getProjectProjectManagerData();
         this.render_dialog = false;
       }, (err: any) => {
         console.log(err);
@@ -57,13 +71,13 @@ export class DashboardComponent {
 
 
 
-  openPopupDashboard(id: any) {
-      this.dashboard.developer = "";
-      this.dashboard.project = "";
-      this.dashboard.project_manager = "";
-      this.dashboard.id = "0";
-    this.getProjects();
+  openPopupDashboard() {
+    this.dashboard.name = "";
+    this.dashboard.projectAssigned = "";
+    this.dashboard.projectManager = "";
+    this.dashboard.resource_id = "0";
     this.render_dialog = true;
+    this.getProjectsPopup();
   }
 
   openPopupDelete(id: any) {
@@ -77,6 +91,11 @@ export class DashboardComponent {
     this.dashboardDataService.deleteDashboardData(this.id).subscribe((data: any) => {
       console.log("dashboard data deleted successfully");
       this.getData();
+      this.getAvailabilityData();
+      this.getProjectListData();
+      this.getProjectManagerData();
+      this.getRequirementsData();
+      this.getProjectProjectManagerData();
       this.render_dialog1 = false;
     }, (err: any) => {
       console.log(err);
@@ -100,16 +119,45 @@ export class DashboardComponent {
     );
   }
 
+  getProjectsPopup() {
+    this.dashboardDataService.getProjects().subscribe((projects: any) => {
+      this.projectsPopup = projects;
+    }, (err: any) => {
+      console.log(err);
+    }
+    );
+  }
 
-  onChange(id: any, developer: any, project: any) {
-    this.dashboardDataService.updateDashboardData(id, developer, project).subscribe((result: any) => {
+
+  onChange(resource_id: any, name: any, projectAssigned: any) {
+    this.dashboardDataService.updateDashboardData(resource_id, name, projectAssigned).subscribe((result: any) => {
       console.log("dashboard saved successfully");
       this.getData();
+      this.getAvailabilityData();
+      this.getProjectListData();
+      this.getProjectManagerData();
+      this.getRequirementsData();
+      this.getProjectProjectManagerData();
       this.render_dialog = false;
     }, (err: any) => {
       console.log(err);
     }
     );
 
+  }
+  getAvailabilityData(){
+    this.availabilityComponent.ngOnInit();
+  }
+  getProjectListData(){
+    this.projectListComponent.ngOnInit();
+  }
+  getProjectManagerData(){
+    this.projectManagerComponent.ngOnInit();
+  }
+  getRequirementsData(){
+    this.requirementsComponent.ngOnInit();
+  }
+  getProjectProjectManagerData(){
+    this.projectProjectManagerComponent.ngOnInit();
   }
 }

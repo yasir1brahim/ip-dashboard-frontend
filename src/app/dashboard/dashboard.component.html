@@ -1,33 +1,33 @@
-<div style="overflow: auto;height:600px;">  
+<div >  
   <h2>
     {{dateToday}}
   </h2>
   <button type="button" class="btn btn-primary" [disabled]="admin==false"
-  (click)="openPopupDashboard(0)">Add
+  (click)="openPopupDashboard()">Add
   </button>
   <table style="table-layout:fixed" width="600">
       <tr>
           <th>Names</th>
-          <th>Assigned Project</th>
+          <th>Project</th>
           <th>Assignee</th>
           <th>Delete</th>
       </tr>
-      <tr *ngFor="let dashboard of dashboards;index as i">
+      <tr *ngFor="let db of dashboards;index as i">
           <td>
-              {{dashboard.developer}}
+              {{db.name}}
           </td>
           <td>
-              <select [(ngModel)]="dashboard.project" #selectedOption class="dropdown"
-              (change)='onChange(dashboard.id,dashboard.developer,selectedOption.value)'>
-                <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+              <select [(ngModel)]="db.projectAssigned" #selectedOption class="dropdown"
+              (change)='onChange(db.resource_id,db.name,selectedOption.value)'>
+                <option *ngFor="let project of projects" [value]="project.project_id">{{project.name}}</option>
               </select>
           </td>
           <td>
-              {{dashboard.project_manager}}
+              {{db.projectManager}}
           </td>
           <td>
             <button type="button" class="btn btn-danger" [disabled]="admin==false"
-              (click)="openPopupDelete(dashboard.id)">Delete
+              (click)="openPopupDelete(db.resource_id)">Delete
             </button>
           </td>
       </tr>
@@ -59,7 +59,7 @@
                 <label>Name</label>
               </td>
               <td style="border:none;">
-                <input type="text" [(ngModel)]="dashboard.developer" class="text-box">
+                <input type="text" [(ngModel)]="dashboard.name" class="text-box">
               </td>
             </tr>
             <tr>
@@ -67,8 +67,8 @@
                 <label>Project</label>
               </td>
               <td style="border:none;">
-                <select [(ngModel)]="dashboard.project" class="dropdown">
-                    <option *ngFor="let project of projects" [value]="project">{{project}}</option>
+                <select [(ngModel)]="dashboard.projectAssigned" class="dropdown">
+                    <option *ngFor="let project of projectsPopup" [value]="project.project_id">{{project.name}}</option>
                 </select>
               </td>
             </tr>

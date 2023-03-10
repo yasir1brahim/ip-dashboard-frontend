@@ -84,8 +84,8 @@ export class RequirementsComponent {
       this.requirement.resource='';
       this.requirement.hours='';
       this.requirement.id='0';
-    this.getResources();
-    this.getProjects();
+    //this.getResources();
+    //this.getProjects();
     this.render_dialog=true;
   }
   closePopup() {

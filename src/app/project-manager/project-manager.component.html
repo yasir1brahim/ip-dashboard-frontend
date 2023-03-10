@@ -5,8 +5,8 @@
   <button type="button" class="btn btn-primary"
   (click)="openPopupProjectManager()" [disabled]="admin==false">Add
   </button>
-  <div *ngFor="let project_manager of project_managers;index as i">
-      <table style="table-layout:fixed" width="400">
+  <div *ngFor="let project_manager of project_managers;index as i" >
+      <table style="table-layout:fixed; float:left; margin:15px" width="300" >
         <tr>
           <td>
             {{project_manager.name}}
@@ -34,11 +34,9 @@
           </tr>
 
       </table>
-      <br>
-      <br>
   </div>
   <div>
-    <table style="table-layout:fixed" width="400">
+    <table style="table-layout:fixed; float:left; margin:15px" width="300">
       <tr>
         <td>
           Available/Leave/Not Yet In
@@ -52,7 +50,7 @@
   <br>
   <br>
   <div>
-    <table style="table-layout:fixed" width="400">
+    <table style="table-layout:fixed; float:left; margin:15px" width="300">
       <tr>
         <th>
           Total

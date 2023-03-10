@@ -11,13 +11,16 @@ import { DashboardDataService } from '../dashboard-data.service';
 export class AvailabilityComponent {
 dateToday:any;
 constructor(private dashboardDataService: DashboardDataService, private datePipe:DatePipe){
-this.getAvailability();
-this.dateToday = this.datePipe.transform(new Date(),'fullDate');
+
 }
 available:any | undefined;
 onLeave:any | undefined;
 notYetIn:any | undefined;
 
+ngOnInit(){
+  this.getAvailability();
+  this.dateToday = this.datePipe.transform(new Date(),'fullDate');
+}
 getAvailability(): void {
     this.dashboardDataService.getAvailability().subscribe((availability: any) => {
       this.available= availability[0].available;

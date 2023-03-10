@@ -1,6 +1,7 @@
 [
       {
         "name": "name1",
+        "manager_id":"2",
         "projects": [
           {
             "project": "Project1",
@@ -14,6 +15,7 @@
       },
       {
         "name": "name2",
+        "manager_id":"3",
         "projects": [
           {
             "project": "Project3",
@@ -27,6 +29,7 @@
       },
       {
         "name": "name3",
+        "manager_id":"4",
         "projects": [
           {
             "project": "Project5",
