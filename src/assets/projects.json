@@ -1,5 +1,6 @@
-[{"id":1,
- "project":"project1"},
+[{"project_id":1,
+ "name":"project1",
+    },
  {"id":2,
  "project":"project2"},
  {"id":3,

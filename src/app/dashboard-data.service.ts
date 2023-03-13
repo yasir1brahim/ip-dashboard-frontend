@@ -94,9 +94,9 @@ availabilityCount:number=0;
     }, );
   }
 
-  updatePPMData(id:any,project:any,project_manager_id:any): Observable<any> {
-    const body = {project_manager_id:project_manager_id };
-    return this.http.put<any>(environment.backendBaseAddress+'updateppms/'+id, body,
+  updatePPMData(project_id:any,name:any,manager_id:any): Observable<any> {
+    const body = {project_id:project_id,manager_id:manager_id };
+    return this.http.put<any>(environment.backendBaseAddress+'api/assignManager', body,
     {/* params:{id:id,developer:developer,project:project,project_manager:project_manager}*/
     }, );
   }

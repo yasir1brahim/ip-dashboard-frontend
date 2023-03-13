@@ -19,21 +19,31 @@ align-items: flex-start;">
 
 <mat-tab-group color="black" backgroundColor="accent" >
     <mat-tab label="Dashboard">
-        <div style="display: flex;align-items: flex-start;">
-        <app-dashboard></app-dashboard>
-        <app-availability></app-availability>
-        </div>
+        <ng-template matTabContent>
+            <div style="display: flex;align-items: flex-start;">
+            <app-dashboard></app-dashboard>
+            <app-availability></app-availability>
+            </div>
+        </ng-template>
     </mat-tab>
     <mat-tab label="Project Manager"> 
-        <app-project-manager></app-project-manager>    
+        <ng-template matTabContent>
+            <app-project-manager></app-project-manager>    
+        </ng-template>
     </mat-tab>
     <mat-tab label="Project List"> 
-        <app-project-list></app-project-list>    
+        <ng-template matTabContent>
+            <app-project-list></app-project-list> 
+        </ng-template>       
     </mat-tab>
     <mat-tab label="Requirements">
-        <app-requirements></app-requirements>    
+        <ng-template matTabContent>
+            <app-requirements></app-requirements>    
+        </ng-template>
     </mat-tab>
     <mat-tab label="Project-Project Manager" *ngIf="admin==true">
-        <app-project-project-manager></app-project-project-manager>
+        <ng-template matTabContent>
+            <app-project-project-manager></app-project-project-manager>
+        </ng-template>
     </mat-tab>
 </mat-tab-group>

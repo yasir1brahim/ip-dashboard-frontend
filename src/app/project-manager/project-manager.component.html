@@ -12,8 +12,8 @@
             {{project_manager.name}}
           </td>
           <td>
-            <div *ngIf="project_manager.projects; else other" >
-              {{ project_manager.projects.length}}
+            <div *ngIf="project_manager.project_list; else other" >
+              {{ project_manager.project_list.length}}
             </div>
             <ng-template #other>
               0
@@ -24,12 +24,12 @@
               <th>Projects</th>
               <th>Resource</th>
           </tr>
-          <tr *ngFor="let project of project_manager.projects;index as i">
+          <tr *ngFor="let project of project_manager.project_list;index as i">
               <td>
-                  {{project.project}}
+                  {{project.name}}
               </td>
               <td>
-                  {{project.assignee}}
+                  {{project.number_resources}}
               </td>
           </tr>
 

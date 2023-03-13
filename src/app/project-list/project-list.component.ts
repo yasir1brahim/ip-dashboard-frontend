@@ -27,6 +27,7 @@ getData(){
   
   this.dashboardDataService.getProjectListData().subscribe((projectList: any) => {
     this.projectList= projectList
+    console.log("projectlist",projectList)
     this.total=0;
     for(let i=0;i<projectList.length;i++){
       this.total+=parseInt(projectList[i].number_resources);

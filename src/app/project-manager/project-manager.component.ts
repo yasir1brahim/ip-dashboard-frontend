@@ -18,9 +18,7 @@ dateToday:any;
   render_dialog=false;
   availabilityCount:number=0;
   total:number=0;
-constructor(private dashboardDataService: DashboardDataService,private authService:AuthService,private datePipe:DatePipe,
-  private availabilityComponent:AvailabilityComponent/*,private projectListComponent:ProjectListComponent,private dashboardComponent:DashboardComponent,
-  private requirementsComponent:RequirementsComponent,private projectProjectManagerComponent:ProjectProjectManagerComponent*/){
+constructor(private dashboardDataService: DashboardDataService,private authService:AuthService,private datePipe:DatePipe){
   this.dateToday = this.datePipe.transform(new Date(),'fullDate')
 }
   projects:any="";
@@ -39,7 +37,7 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
     this.dashboardDataService.getProjectManagerData().subscribe((project_managers: any) => {
       this.project_managers=project_managers
       // console.log("length");
-      console.log(this.project_managers);
+      console.log("project_managers",this.project_managers);
       this.getAvailabilityCount();
       this.getTotal();
       }, (err: any) => {
@@ -56,11 +54,6 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
     this.dashboardDataService.saveProjectManager(this.name/*,this.projects*/).subscribe((requirements: any) => {
       console.log("Project Manager saved successfully");
       this.getData();
-      // this.getAvailabilityData();
-      // this.getProjectListData();
-      // this.getProjectManagerData();
-      // this.getRequirementsData();
-      // this.getProjectProjectManagerData();
       this.render_dialog=false;
   }, (err: any) => {
       console.log(err);
@@ -77,28 +70,9 @@ constructor(private dashboardDataService: DashboardDataService,private authServi
 
   getTotal(){
     this.total=0;
-    for(let i=0;i<this.project_managers.length;i++){
-      this.total+=this.project_managers[i].projects.length; 
-    }
-    this.total+=this.availabilityCount;
-    
+      for(let i=0;i<this.project_managers.length;i++){
+        this.total+=this.project_managers[i].project_list.length; 
+      }
+      this.total+=this.availabilityCount;
   }
-
-/*
-  getAvailabilityData(){
-    this.availabilityComponent.ngOnInit();
-  }
-  getProjectListData(){
-    this.projectListComponent.ngOnInit();
-  }
-  getDashboardData(){
-    this.dashboardComponent.ngOnInit();
-  }
-  getRequirementsData(){
-    this.requirementsComponent.ngOnInit();
-  }
-  getProjectProjectManagerData(){
-    this.projectProjectManagerComponent.ngOnInit();
-  }
-*/
 }

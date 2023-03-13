@@ -11,12 +11,12 @@
             <th>Project Manager</th>
             <th>Delete</th>
         </tr>
-        <tr *ngFor="let ppm of ppms;index as i">
+        <tr *ngFor="let ppm of ppmss;index as i">
             <td>
                 {{ppm.name}}
             </td>
             <td>
-                <select [(ngModel)]="ppm.project_manager" #selectedOption class="dropdown"
+                <select [(ngModel)]="ppm.manager_id" #selectedOption class="dropdown"
                 (change)='onChange(ppm.project_id,ppm.name,selectedOption.value)'>
                   <option *ngFor="let pm of project_managers" [value]="pm.manager_id">{{pm.name}}</option>
                 </select>
@@ -63,7 +63,7 @@
                   <label>Project Manager</label>
                 </td>
                 <td style="border:none;">
-                  <select [(ngModel)]="ppm.project_manager" class="dropdown">
+                  <select [(ngModel)]="ppm.manager_id" class="dropdown">
                       <option *ngFor="let pm of project_managers" [value]="pm.manager_id">{{pm.name}}</option>
                   </select>
                 </td>
@@ -111,3 +111,32 @@
       </div>
     </div>
   </div>
+
+
+  <div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':'block'}" *ngIf="render_dialog_already_assigned">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Error</h4>
+        <button type="button" class="btn"
+        (click)="closePopup()">
+        <img src="assets/images/cancel.svg" alt="arrow" height="30px" width="30px"/>
+</button>
+      </div>
+      <div class="modal-body">
+        Project Manager is already assigned to this Project.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" 
+        (click)="closePopup()">
+        OK
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
